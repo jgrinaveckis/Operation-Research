@@ -27,7 +27,7 @@ Taigi, uždavinio matematinis modelis: ![](https://latex.codecogs.com/gif.latex?
 
 ## 2. Tikslo funkcija ##
 
-Tikslo funkcija - ![](https://latex.codecogs.com/gif.latex?c%28t%29%20%3Dmin%28%5Cfrac%7B150%7D%7Bt%7D%20&plus;%203%5Ccdot%20t%5Ccdot%204.5%29%3Dmin%28%5Cfrac%7B150%7D%7Bt%7D&plus;13.5t%29%3Dmin%28150&plus;13.5t%5E2%29)
+Tikslo funkcija - ![](https://latex.codecogs.com/gif.latex?c%28t%29%3Dmin%28%5Cfrac%7B150%7D%7Bt%7D&plus;3%5Ccdot%20t%5Ccdot%204.5%29%3Dmin%28%5Cfrac%7B150%7D%7Bt%7D&plus;13.5t%29)
 
 ## 3. Intervalo dalijimo pusiau metodas ##
 1. Tikslo funkcija MATLAB aplinkoje su konkrečiais parametrais
