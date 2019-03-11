@@ -66,7 +66,7 @@ function [x_min_mid, f_min, nauja_pradzia, nauja_pabaiga, iteration, lenght1, xp
         fx2 = tikslo_funkcija(x2); %funkcija naujoje intervalo pabaigoje
         
 %Jeigu funkcijos reikšmė naujoje intervalo pradžioje yra mažesne už
-%matematinio modelio reikšmę buvusiame vidurio taške, tuomet
+%matematinio modelio reikšmę buvusiame vidurio taške
         if(fx1 < fx_mid)
             pabaiga = x_mid;     %intervalo pabaiga = buvęs vidurio taškas
             x_mid = x1;          %buvęs vidurio taškas tampa nauja intervalo pradžia
@@ -75,17 +75,17 @@ function [x_min_mid, f_min, nauja_pradzia, nauja_pabaiga, iteration, lenght1, xp
 %už matematinio modelio reikšmę buvusiame vidurio taške, tuomet
             if(fx2 < fx_mid)                
                 pradzia = x_mid; %intervalo pradžia yra lygi buvusiam vidurio taškui
-                x_mid = x2;      %buvęs vidurio taškas tampa nauja intervalo pabaiga
+                x_mid = x2;      %buvęs vidurio taškas tampa intervalo pabaiga
             else
                 pradzia = x1;    %intervalo pradžia pasistumia ketvirtadaliu viso intervalo ilgio
-                pabaiga = x2;      %intervalo pabaiga atsitraukia ketvirtadaliu viso intervalo ilgio
+                pabaiga = x2;      %intervalo pabaiga atsitraukia ketvirtadaliu ilgio
             end
         end
         
-        fx_mid1 = tikslo_funkcija(x_mid);   %matematinio modelio reikšmė naujame vidurio taške
+        fx_mid1 = tikslo_funkcija(x_mid); %modelio reikšmė naujame vidurio taške
         xpoint(iteration) = x_mid;   %išsaugomas taškas
         xvalue(iteration) = fx_mid1; %išsaugoma reikšmė
-        lenght = pabaiga - pradzia;  %išsaugomas naujas intervalo ilgis
+        lenght = pabaiga - pradzia;  %naujas intervalo ilgis
         if(fx_mid2 > fx_mid1)      %jeigu tenkina sąlygą, perrašomos reikšmės  
             lenght1 = lenght;        
             nauja_pradzia = pradzia; 
@@ -94,4 +94,7 @@ function [x_min_mid, f_min, nauja_pradzia, nauja_pabaiga, iteration, lenght1, xp
             fx_mid2 = fx_mid1;       
         end
     end
+    
+    f_min = fx_min2 % rastas matematinio modelio min taškas
+ end
 ```
