@@ -65,14 +65,14 @@ function [x_min_mid, f_min, nauja_pradzia, nauja_pabaiga, iteration, lenght1, xp
         fx1 = tikslo_funkcija(x1); %funkcija naujoje intervalo pradžioje
         fx2 = tikslo_funkcija(x2); %funkcija naujoje intervalo pabaigoje
         
-%Jeigu funkcijos reikšmė naujoje intervalo pradžioje yra mažesne už
-%matematinio modelio reikšmę buvusiame vidurio taške
+        %Jeigu funkcijos reikšmė naujoje intervalo pradžioje yra mažesne už
+        %matematinio modelio reikšmę buvusiame vidurio taške
         if(fx1 < fx_mid)
             pabaiga = x_mid;     %intervalo pabaiga = buvęs vidurio taškas
             x_mid = x1;          %buvęs vidurio taškas tampa nauja intervalo pradžia
         else 
-%Kitu atveju, jei funkcijos reikšmė naujoje intervalo pabaigoje yra mažesnė
-%už matematinio modelio reikšmę buvusiame vidurio taške, tuomet
+        %Kitu atveju, jei funkcijos reikšmė naujoje intervalo pabaigoje yra mažesnė
+        %už matematinio modelio reikšmę buvusiame vidurio taške, tuomet
             if(fx2 < fx_mid)                
                 pradzia = x_mid; %intervalo pradžia yra lygi buvusiam vidurio taškui
                 x_mid = x2;      %buvęs vidurio taškas tampa intervalo pabaiga
@@ -98,3 +98,5 @@ function [x_min_mid, f_min, nauja_pradzia, nauja_pabaiga, iteration, lenght1, xp
     f_min = fx_min2 % rastas matematinio modelio min taškas
  end
 ```
+## 4. Tikslo funkcijos minimumas (mažiausios prekybos bazės išlaidos) ir minimumo taškas (prekių vežimo intervalas) ##
+
