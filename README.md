@@ -33,7 +33,6 @@ Tikslo funkcija - ![](https://latex.codecogs.com/gif.latex?c%28t%29%3Dmin%28%5Cf
 1. Tikslo funkcija MATLAB aplinkoje su konkrečiais parametrais
 ```matlab
 function [ft] =  tikslo_funkcija(t)
-    %Konkrečios reikšmės
     b = mod(20132760, 7)/2 + 2.5; 
     c2 = mod(20132760, 30) + 150;
     c = mod(20132760, 5) + 3;
@@ -94,8 +93,7 @@ function [x_min_mid, f_min, new_start, new_endp, iteration, lenght1, xpoint, xva
             fx_mid2 = fx_mid1;       
         end
     end
-    
-    f_min = fx_min2 % rastas matematinio modelio min taškas
+    f_min = fx_mid2 % rastas matematinio modelio min taškas
  end
 ```
 ## 4. Tikslo funkcijos minimumas (mažiausios prekybos bazės išlaidos) ir minimumo taškas (prekių vežimo intervalas) ##
@@ -117,8 +115,8 @@ function [q, t, x_min_mid, f_min, islaidos, iteration, lenght] = maz_islaidos(st
     t = vid_tasko_apacia;    %išsaugoma reikšme
   end
  
-  x = pradzia:1:pabaiga;                       %vektorius nuo pradžios iki pabaigos
-  y = tikslo_funkcija(x);                         %išlaidos kiekviename taške
+  x = start:1:endp; %vektorius nuo pradžios iki pabaigos
+  y = tikslo_funkcija(x);
  
   %aukso pjuvio ir kvadratines interpoliacijos metodo naudojimas
   optimizacija = optimset('Display', 'iter','MaxFunEvals', 1000,'PlotFcns', @optimplotfval , 'TolX', lenght);
@@ -132,7 +130,8 @@ function [q, t, x_min_mid, f_min, islaidos, iteration, lenght] = maz_islaidos(st
   
   b = mod(20132760, 7)/2 + 2.5; 
   q = t * b; %vienos partijos dydis
-  
+  xfminbnd;
+  yfminbnd;
 end
 ```
 
