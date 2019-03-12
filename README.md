@@ -154,14 +154,7 @@ Iteracijų skaičius - iteration = 5;
 
 Ilgis - lenght = 5;
 
-## 6. Grafikų atvaizdavimas ##
-<p align="center">
-  <img src="https://github.com/jgrinaveckis/Operation-Research/blob/1-LD/Optimization.jpg">
-</p>
-
-<p align="center">
-    Kvadratinės interpoliacijos ir auksinio pjūvio grafikas
-</p>
+## 6. Išlaidų grafikas ##
 
 <p align="center">
   <img src="https://github.com/jgrinaveckis/Operation-Research/blob/1-LD/Islaidos.jpg">
@@ -170,3 +163,31 @@ Ilgis - lenght = 5;
 <p align="center">
     Dalijimo pusiau grafikas
 </p>
+
+## 7. Kvadratinė interpoliacija ir auksinio pjūvio metodas ##
+
+<p align="center">
+  <img src="https://github.com/jgrinaveckis/Operation-Research/blob/1-LD/Optimization.jpg">
+</p>
+
+<p align="center">
+    Kvadratinės interpoliacijos ir auksinio pjūvio grafikas
+</p>
+
+    Func-count   x          f(x)        Procedure
+
+    1         12.077       175.46        initial
+    
+    2         18.923      263.387        golden
+    
+    3        7.84597      125.039        golden
+    
+    4        5.23104      99.2941        golden
+    
+    5        3.61493      90.2961        golden
+    
+    6        2.40659      94.8178        parabolic
+    
+Minimalus taškas - xfminbnd = 3.61493
+
+Minimali reikšmė - yfminbnd = 90.2961 
