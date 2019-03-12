@@ -156,3 +156,7 @@ Ilgis - lenght = 5;
 
 ## 6. Grafikų atvaizdavimas ##
 
+![](https://github.com/jgrinaveckis/Operation-Research/blob/1-LD/Optimization.jpg)
+
+Kvadratinės interpoliacijos ir auksinio pjūvio grafikas
+
