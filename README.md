@@ -155,8 +155,18 @@ Iteracijų skaičius - iteration = 5;
 Ilgis - lenght = 5;
 
 ## 6. Grafikų atvaizdavimas ##
+<p align="center">
+  <img src="https://github.com/jgrinaveckis/Operation-Research/blob/1-LD/Optimization.jpg">
+</p>
 
-![](https://github.com/jgrinaveckis/Operation-Research/blob/1-LD/Optimization.jpg)
+<p align="center">
+    Kvadratinės interpoliacijos ir auksinio pjūvio grafikas
+</p>
 
-Kvadratinės interpoliacijos ir auksinio pjūvio grafikas
+<p align="center">
+  <img src="https://github.com/jgrinaveckis/Operation-Research/blob/1-LD/Islaidos.jpg">
+</p>
 
+<p align="center">
+    Dalijimo pusiau grafikas
+</p>
