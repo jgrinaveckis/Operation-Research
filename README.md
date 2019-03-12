@@ -99,7 +99,7 @@ function [x_min_mid, f_min, new_start, new_endp, iteration, lenght1, xpoint, xva
 ## 4. Tikslo funkcijos minimumas (mažiausios prekybos bazės išlaidos) ir minimumo taškas (prekių vežimo intervalas) ##
 
 ```matlab
-function [q, t, x_min_mid, f_min, islaidos, iteration, lenght] = maz_islaidos(start, endp)
+function [q, t, x_min_mid, f_min, islaidos, iteration, lenght, xfminbnd, yfminbnd] = maz_islaidos(start, endp)
   [x_min_mid, f_min, new_start, new_end, iteration, lenght, xpoint, xvalue] = dalijimas_pusiau(start, endp);
   vidurio_taskas = (new_start+new_endp)/2; 
   vid_tasko_apacia = floor(vidurio_taskas);          
@@ -129,9 +129,7 @@ function [q, t, x_min_mid, f_min, islaidos, iteration, lenght] = maz_islaidos(st
   ylabel('Prekybos bazes išlaidos per diena'); 
   
   b = mod(20132760, 7)/2 + 2.5; 
-  q = t * b; %vienos partijos dydis
-  xfminbnd;
-  yfminbnd;
+  q = t * b; %partijos dydis
 end
 ```
 
