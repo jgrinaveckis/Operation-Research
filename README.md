@@ -1,2 +1,2 @@
-## Operacijų tyrimas ir taikymai ##
+## Simplekso metodas ##
 
