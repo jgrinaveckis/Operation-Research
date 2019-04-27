@@ -128,7 +128,7 @@ end
 ## 4. Rezultatai ##
 
 Kiekvieną kartą keičiant duomenis nurodyta lentelė, kurioje atvaizduota informaciją apie kiekvieną iteraciją naudojant deformuoto simplekso (fminsearch) funkciją.
-### Rezultatai, esant pradinėms reikšmėms (alfa = 0.5, x = (1, 1)): ###
+### 1. Rezultatai, esant pradinėms reikšmėms (alfa = 0.5, x = (1, 1)): ###
 
 | Iteration 	| Func-count 	| min f(x) 	|    Procedure    	|
 |:---------:	|:----------:	|:--------:	|:---------------:	|
@@ -152,7 +152,7 @@ Kiekvieną kartą keičiant duomenis nurodyta lentelė, kurioje atvaizduota info
 * Iteracijų skaičius paprastojo simplekso metodu - 4
 * Įteracijų skaičius deformuoto simplekso metodu (fminsearch) - 11
 
-### Rezultatai, esant reikšmėms (alfa = 0.5, x = (6, 6)): ###
+### 2. Rezultatai, esant reikšmėms (alfa = 0.5, x = (6, 6)): ###
 
 | Iteration 	| Func-count 	|   min f(x)  	|     Procedure    	|
 |:---------:	|:----------:	|:-----------:	|:----------------:	|
@@ -259,7 +259,7 @@ Kiekvieną kartą keičiant duomenis nurodyta lentelė, kurioje atvaizduota info
 * Iteracijų skaičius paprastojo simplekso metodu - 1
 * Įteracijų skaičius deformuoto simplekso metodu (fminsearch) - 95
 
-### Rezultatai, esant reikšmėms (alfa = 0.5, x = (10, 10)): ###
+### 3. Rezultatai, esant reikšmėms (alfa = 0.5, x = (10, 10)): ###
 
 | Iteration 	| Func-count 	|   min f(x)  	|     Procedure    	|
 |:---------:	|:----------:	|:-----------:	|:----------------:	|
@@ -385,7 +385,7 @@ Kiekvieną kartą keičiant duomenis nurodyta lentelė, kurioje atvaizduota info
 * Iteracijų skaičius paprastojo simplekso metodu - 1
 * Įteracijų skaičius deformuoto simplekso metodu (fminsearch) - 114
 
-### Rezultatai, esant reikšmėms (alfa = 0.1, x = (10, 10)): ###
+### 4. Rezultatai, esant reikšmėms (alfa = 0.1, x = (10, 10)): ###
 
 | Iteration 	| Func-count 	|   min f(x)  	|     Procedure    	|
 |:---------:	|:----------:	|:-----------:	|:----------------:	|
@@ -521,3 +521,15 @@ Kiekvieną kartą keičiant duomenis nurodyta lentelė, kurioje atvaizduota info
 |                             x                            	|       (1, 1)       	|  (0.9997, 0.9997)  	|   (0.9978, 0.9955)   	|   (0.9978, 0.9955)   	|
 |                           fval                           	|          0         	|     8.6108e-06     	|      5.0669e-06      	|      5.0669e-06      	|
 | Iteracijų skaičius naudojant deformuoto simplekso metodą 	|         11         	|         95         	|          114         	|          114         	|
+
+**Išvados**
+
+1. Pradiniame taške (alfa = 0.5, x0 = (1, 1)) paprasto simplekso metodo iteracijų skaičius stipriai skiriasi dėl to, jog y yra lygus 0.
+2. Keičiant bazinį tašką (x0), keičiasi įteracijų skaičius naudojant deformuoto simplekso funckiją (fminsearch). x ir fval reikšmės šiek tiek mažėjo, didinant bazinio taško reikšmes.
+3. Sumažinus tikslumą (alfa), nežymiai sumažėjo ir x reikšmės naudojant paprastojo simplekso metodą. Tačiau tikslumas sumažėjo palyginus mažai, nes tikslumas buvo sumažintas 5 kartus.
+4. Didesnis tikslumas gaunamas naudojant deformuoto simplekso metodą (fminsearch), tačiau žymiai išauga tikslumui pasiekti reikalingų įteracijų kiekis, todėl renkantis kurį metodą naudoti, reikia iš pradžių pasirinkti ko labiau reikia - greičio ar tikslumo.
+
+## 5. Grafikas ##
+
+Atvaizduotas grafikas yra paimtas iš 4 varianto (alfa = 0.1, x0 = (10, 10))
+
