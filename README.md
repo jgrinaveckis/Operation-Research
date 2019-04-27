@@ -533,3 +533,10 @@ Kiekvieną kartą keičiant duomenis nurodyta lentelė, kurioje atvaizduota info
 
 Atvaizduotas grafikas yra paimtas iš 4 varianto (alfa = 0.1, x0 = (10, 10))
 
+<p align="center">
+ <img src="https://github.com/jgrinaveckis/Operation-Research/blob/2-LD/rozenbroko.jpg">
+</p>
+
+<p align="center">
+    Rozenbroko funkcijos grafikas
+</p>
