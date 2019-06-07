@@ -44,3 +44,55 @@ Dar vienas apribojimas - gaminių A, B, C ir D per dvi darbo savaites turi būti
 | y3 	| 13  	| 7   	| 7   	| 3   	| 760  	|
 | y4 	| -1  	| -1  	| -1  	| -1  	| -310 	|
 |    	| 30  	| 350 	| 222 	| -32 	|      	|
+
+Apačioje nurodytas programinis kodas, skirtas rasti optimalų sprendimą siekiant maksimizuoti pelną iš gaminamų gaminių. 
+
+```matlab
+function [x,sol,fval,exitflag] = simplextableautest()
+%nurodomi kintamieji ir ju apatines ribos (0)
+%kadangi virsutiniu ribu nera, ju galime nenurodyti, automatiskai
+%bus priskirta begalybe
+x1 = optimvar('x1','LowerBound',0);
+x2 = optimvar('x2','LowerBound',0);
+x3 = optimvar('x3','LowerBound',0);
+x4 = optimvar('x4','LowerBound',0);
+%optimizuojama problema, nurodoma tikslo funkcija, pasirenkamas tipas (min
+%arba max)
+prob = optimproblem('Objective',-30*x1-350*x2-222*x3+32*x4,'ObjectiveSense','max');
+%nurodomos apribojimu tikslo funkcijos
+prob.Constraints.c1 = 5*x1+4*x2+x3+5*x4 <= 780;
+prob.Constraints.c2 = 7*x1+4*x2+5*x3+5*x4 <= 520;
+prob.Constraints.c3 = 13*x1+7*x2+7*x3+3*x4 <= 760;
+prob.Constraints.c4 = -x1-x2-x3-x4 <= 310;
+%suformuluojamas apribojimu ir problemos bendras objektas
+problem = prob2struct(prob);
+%Sprendziamas uzdavinys
+[x,sol,fval,exitflag]=linprog(problem);
+end
+```
+
+Naudojama funkcija 'linprog' išveda sprendinių vektorių (kintamasis 'x'), maksimalų pelną ('sol') ir kitus ('fval' bei 'exitflag') parametrus apie patį sprendimą. Pagal gautus rezultatus (x = [0, 0, 0, 104] ir sol = -3328) galime daryti išvada, jog būtų gaminami tik "D" rūšies gaminiai, nes kitos vertės x vektoriuje yra lygios 0 (x(1) = A = 0, x(2) = B = 0, x(3) = C = 0, <b>x(4) = D = 104</b>) ir maksimalus pelnas yra <b>3328</b> eurų. Atsakymui gauti prireikė tik <b>1</b> iteracijos. Atsakyme gautas skaičius yra lygus -3328, tačiau naudojant 'optimproblem' funkciją ir pasirinkus maksimizavimo tipą funkcija viduje šį uždavinį pakeičia į minimizavimo uždavinį su neigiamu ženklu, todėl gautą atsakymą reikia padauginti iš (-1). Taigi turint gaminamų gaminių skaičių vektorių, galime ir patys apsiskaičiuoti maksimalų pelną ir patikrinti gautą atsakymą - ![](https://latex.codecogs.com/gif.latex?0%5Ccdot-30%5Ccdot-0%5Ccdot350%5Ccdot%20-0%5Ccdot222%5Ccdot&plus;104%5Ccdot32%3D3328). Jis įrodo, jog apskaičiuotas atsakymas yra tikrai teisingas.
+
+#### Galutinė lentelė ####
+
+|    | -x1  | -x2   | -x3 | -y2  |      |
+|----|------|-------|-----|------|------|
+| y1 | -2   | 0     | 4   | -1   | 260  |
+| x4 | 1,4  | 0,8   | 1   | 0,2  | 104  |
+| y3 | 8,8  | 4,6   | 4   | -0,6 | 448  |
+| y4 | 0,4  | -0,2  | 0   | 0,2  | -206 |
+|    | 74,8 | 375,6 | 254 | 6,4  | 3328 |
+
+Lentelė gauta naudojant įrankį [šiame puslapyje](https://www.zweigmedia.com/RealWorld/simplex.html) arba galima naudoti funkciją, kurios programinis kodas nemokamai patalpintas [čia](https://www.12000.org/my_notes/simplex/index.htm). 
+
+Skaitant lentelės duomenis galima surašyti visus gautus rezultatus:
+
+* Gaminami bus tik D rūšies gaminiai (104 vienetai)
+* 1 klasės sąnaudos bus panaudotos pilnai (y2 = 0)
+* Darbo valandų bus likę dar 260 (y1 = 260)
+* 2 klasės sąnaudų liks 448 vienetai (y3 = 448)
+* Bendras gaminių kiekis bus mažesnis 206 vienetais (prisiminkime, kad bus gaminami tik D rūšies gaminiai ir jų bus 106 vienetai). Todėl reikės papildomai užsakyti 206 vienetus gaminių.
+* Pelnas maksimalus - 3328 eurai.
+
+### Papildomos rušies gaminio įvedimas ###
+
