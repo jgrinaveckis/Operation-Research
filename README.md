@@ -132,7 +132,7 @@ prob = optimproblem('Objective',-30*x1-350*x2-222*x3+32*x4+50*x5,'ObjectiveSense
 %nurodomos apribojimu tikslo funkcijos
 prob.Constraints.c1 = 5*x1+4*x2+x3+5*x4+3*x5 <= 780;
 prob.Constraints.c2 = 7*x1+4*x2+5*x3+5*x4+4*x5 <= 520;
-prob.Constraints.c3 = 13*x1+7*x2+7*x3+3*x4+x5 <= 760;
+prob.Constraints.c3 = 13*x1+7*x2+7*x3+3*x4+6*x5 <= 760;
 prob.Constraints.c4 = -x1-x2-x3-x4-x5 <= 310;
 %suformuluojamas apribojimu ir problemos bendras objektas
 problem = prob2struct(prob);
@@ -141,9 +141,39 @@ problem = prob2struct(prob);
 end
 ```
 
+```
+
+Optimal solution found.
+x =
+
+         0
+         0
+         0
+    4.4444
+  124.4444
+
+
+sol =
+
+  -6.3644e+03
+  
+fval =
+
+     1
+
+exitflag = 
+  struct with fields:
+
+         iterations: 3
+    constrviolation: 2.2737e-13
+            message: 'Optimal solution found.'
+          algorithm: 'dual-simplex'
+      firstorderopt: 1.5411e-12
+```
+
 Sprendimui reikalinga logika išlieka tokia pati kaip ir pradiniam variantui, tiesiog įvedamas naujas gaminys (x5) su atitinkamais parametrais.
 
-Pagal gautus atsakymus matome, jog reikėjo 3 iteracijų rasti optimaliam sprendimui. Bus gaminami "D" ir "E" tipo gaminiai atitinkamai 4.44 ir 124.44 vienetai (x = [0, 0, 0, 4.44, 124.44]). Maksimalus gautas pelnas - 3876 eurai.
+Pagal gautus atsakymus matome, jog reikėjo 3 iteracijų rasti optimaliam sprendimui. Bus gaminami "D" ir "E" tipo gaminiai atitinkamai 4.44 ir 124.44 vienetai (x = [0, 0, 0, 4.44, 124.44]). Maksimalus gautas pelnas - 6360 eurai.
 
 #### Tarpinė ir galutinė lentelės ####
 
@@ -167,7 +197,7 @@ Galutinė lentelė:
 | x4 | -0.556 | -0.222 | 0.111 | 0.333  | -0.222 | 4.44 |
 | x5 | 2.44   | 1.28   | 1.11  | -0.167 | 0.278  | 124  |
 | y4 | 0.889  | 0.0556 | 0.222 | 0.167  | 0.0556 | -181 |
-|    | 85.6   | 381    | 259   | 5.67   | 1.22   | 3880 |
+|    | 85.6   | 381    | 259   | 5.67   | 1.22   | 6360 |
 
 Matome, jog apatinėje eilutėje neigiamų skaičių nebėra, todėl galime daryti išvadą, jog optimalus sprendimas rastas. Gauti rezultatai - 
 
@@ -175,4 +205,4 @@ Matome, jog apatinėje eilutėje neigiamų skaičių nebėra, todėl galime dary
 * 1 ir 2 klasės sąnaudos bus panaudotos pilnai (y2 ir y3 = 0)
 * Liks nepanaudotos 384 darbininkų valandos
 * Bus pagaminta 181 gaminiu per mažai, todėl bus reikalingas papildomas užsakymas
-* Maksimalus gautas pelnas - 3880 eurai.
+* Maksimalus gautas pelnas - 6360 eurai.
