@@ -209,7 +209,7 @@ exitflag =
 
 Sprendimui reikalinga logika išlieka tokia pati kaip ir pradiniam variantui, tiesiog įvedamas naujas gaminys (x5) su atitinkamais parametrais.
 
-Pagal gautus atsakymus matome, jog reikėjo 3 iteracijų rasti optimaliam sprendimui. Bus gaminami "D" ir "E" tipo gaminiai atitinkamai 4.44 ir 124.44 vienetai (x = [0, 0, 0, 4.44, 124.44]). Maksimalus gautas pelnas - 6360 eurai.
+Pagal gautus atsakymus matome, jog reikėjo 3 iteracijų rasti optimaliam sprendimui. Bus gaminami "D" ir "E" tipo gaminiai atitinkamai 4.44 ir 124.44 vienetai (x = [0, 0, 0, 4.44, 124.44]). Maksimalus gautas pelnas - <b>6364</b> eurai.
 
 #### Tarpinė ir galutinė lentelės ####
 
