@@ -96,3 +96,83 @@ Skaitant lentelės duomenis galima surašyti visus gautus rezultatus:
 
 ### Papildomos rušies gaminio įvedimas ###
 
+|                                                                      | A  | B  | C  | D  | E   |
+|----------------------------------------------------------------------|----|----|----|----|-----|
+| Vieno darbininko darbo laikas  vienos rūšies gaminio gamybai, (val.) | 5  | 4  | 1  | 5  | 3   |
+| 1 klasės sąnaudos vienam gaminiui                                    | 7  | 4  | 5  | 5  | 4   |
+| 2 klasės sąnaudos vienam gaminiui                                    | 13 | 7  | 7  | 6  | 1   |
+| 3 klasės sąnaudos vienam gaminiui                                    | 2  | 8  | 5  | 1  | 1   |
+| Pardavimo kaina, vnt.                                                | 70 | 50 | 38 | 82 | 80  |
+
+Naujo gaminio sąnaudos - pagaminimui reikia 3 val., 1 klasės sąnaudų - 4 vnt., 2 klasės sąnaudų - 1 vnt., 3 klasės sąnaudų - 1 vnt., pardavimo kaina - 100 eu./vnt.
+
+#### Pradinė simplekso lentelė ####
+
+|    | -x1 | -x2 | -x3 | -x4 | -x5 |      |
+|----|-----|-----|-----|-----|-----|------|
+| y1 | 5   | 4   | 1   | 5   | 3   | 780  |
+| y2 | 7   | 4   | 5   | 5   | 4   | 520  |
+| y3 | 13  | 7   | 7   | 3   | 6   | 760  |
+| y4 | -1  | -1  | -1  | -1  | -1  | -310 |
+|    | 30  | 350 | 222 | -32 | -50 |      |
+
+```matlab
+function [x,sol,fval,exitflag] = simplextableautest()
+%nurodomi kintamieji ir ju apatines ribos (0)
+%kadangi virsutiniu ribu nera, ju galime nenurodyti, automatiskai
+%bus priskirta begalybe
+x1 = optimvar('x1','LowerBound',0);
+x2 = optimvar('x2','LowerBound',0);
+x3 = optimvar('x3','LowerBound',0);
+x4 = optimvar('x4','LowerBound',0);
+x5 = optimvar('x5','LowerBound',0);
+%optimizuojama problema, nurodoma tikslo funkcija, pasirenkamas tipas (min
+%arba max)
+prob = optimproblem('Objective',-30*x1-350*x2-222*x3+32*x4+50*x5,'ObjectiveSense','max');
+%nurodomos apribojimu tikslo funkcijos
+prob.Constraints.c1 = 5*x1+4*x2+x3+5*x4+3*x5 <= 780;
+prob.Constraints.c2 = 7*x1+4*x2+5*x3+5*x4+4*x5 <= 520;
+prob.Constraints.c3 = 13*x1+7*x2+7*x3+3*x4+x5 <= 760;
+prob.Constraints.c4 = -x1-x2-x3-x4-x5 <= 310;
+%suformuluojamas apribojimu ir problemos bendras objektas
+problem = prob2struct(prob);
+%apskaiciuojamas
+[x,sol,fval,exitflag]=linprog(problem);
+end
+```
+
+Sprendimui reikalinga logika išlieka tokia pati kaip ir pradiniam variantui, tiesiog įvedamas naujas gaminys (x5) su atitinkamais parametrais.
+
+Pagal gautus atsakymus matome, jog reikėjo 3 iteracijų rasti optimaliam sprendimui. Bus gaminami "D" ir "E" tipo gaminiai atitinkamai 4.44 ir 124.44 vienetai (x = [0, 0, 0, 4.44, 124.44]). Maksimalus gautas pelnas - 3876 eurai.
+
+#### Tarpinė ir galutinė lentelės ####
+
+Tarpinė lentelė:
+
+|    | -x1  | -x2   | -x3 | -y2  | -x5  |      |
+|----|------|-------|-----|------|------|------|
+| y1 | -2   | 0     | -4  | -1   | -1   | 260  |
+| x4 | 1.4  | 0.8   | 1   | 0,2  | 0,8  | 104  |
+| y3 | 8.8  | 4.6   | 4   | -0,6 | 3,6  | 448  |
+| y4 | 0.4  | -0.2  | 0   | 0,2  | -0,2 | -206 |
+|    | 74.8 | 375.6 | 254 | 6,4  | -4,4 | 3328 |
+
+Matome, jog apatinėje eilutėje yra neigiamas skaičius stulpelyje (-x5), todėl reikalinga dar viena iteracija rasti optimaliam sprendimui
+
+Galutinė lentelė:
+
+|    | -x1    | -x2    | -x3   | -y2    | -y3    |      |
+|----|--------|--------|-------|--------|--------|------|
+| y1 | 0.444  | 1.28   | -2.89 | -1.17  | 0.278  | 384  |
+| x4 | -0.556 | -0.222 | 0.111 | 0.333  | -0.222 | 4.44 |
+| x5 | 2.44   | 1.28   | 1.11  | -0.167 | 0.278  | 124  |
+| y4 | 0.889  | 0.0556 | 0.222 | 0.167  | 0.0556 | -181 |
+|    | 85.6   | 381    | 259   | 5.67   | 1.22   | 3880 |
+
+Matome, jog apatinėje eilutėje neigiamų skaičių nebėra, todėl galime daryti išvadą, jog optimalus sprendimas rastas. Gauti rezultatai - 
+
+* Gaminami bus "D" ir "E" rūšies gaminiai atitinkamai "D" = 4.44 (mažiausiai 5 gaminiai), "E" = 124
+* 1 ir 2 klasės sąnaudos bus panaudotos pilnai (y2 ir y3 = 0)
+* Liks nepanaudotos 384 darbininkų valandos
+* Bus pagaminta 181 gaminiu per mažai, todėl bus reikalingas papildomas užsakymas
+* Maksimalus gautas pelnas - 3880 eurai.
